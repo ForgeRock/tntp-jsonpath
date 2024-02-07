@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "origin": "https://openam-tntp-jsonpath.forgeblocks.com/platform/?realm=alpha#/journeys/jsonpath",
+    "exportedBy": "justin.chin@forgerock.com",
+    "exportDate": "2024-01-07T06:39:04.940Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "jsonpath"
+    ],
+    "innerTreesIncluded": []
+  },
+  "trees": {
+    "jsonpath": {
+      "tree": {
+        "_id": "jsonpath",
+        "_rev": "617825193",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[]"
+        },
+        "entryNodeId": "9448cc6d-50c6-4ba8-869e-7e1c33276d33",
+        "innerTreeOnly": false,
+        "nodes": {
+          "9448cc6d-50c6-4ba8-869e-7e1c33276d33": {
+            "x": 217,
+            "y": 160.015625,
+            "connections": {
+              "true": "daf33fe4-7c92-4172-ac18-7cfa75b09f94"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Scripted Decision"
+          },
+          "daf33fe4-7c92-4172-ac18-7cfa75b09f94": {
+            "x": 426,
+            "y": 287.015625,
+            "connections": {
+              "SUCCESS": "2f1763a8-4a7e-4513-95a8-37f1190fb495",
+              "ERROR": "b97aee14-2644-42eb-aa00-e344f33615d3"
+            },
+            "nodeType": "JSONPath",
+            "displayName": "JSONPath"
+          },
+          "2f1763a8-4a7e-4513-95a8-37f1190fb495": {
+            "x": 683,
+            "y": 179.015625,
+            "connections": {
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          },
+          "b97aee14-2644-42eb-aa00-e344f33615d3": {
+            "x": 687,
+            "y": 373.015625,
+            "connections": {
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 50,
+            "y": 250
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 762,
+            "y": 45
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 989,
+            "y": 297
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "9448cc6d-50c6-4ba8-869e-7e1c33276d33": {
+          "_id": "9448cc6d-50c6-4ba8-869e-7e1c33276d33",
+          "_rev": "464671608",
+          "script": "ec85ea8c-873c-4fcb-9ed8-c2f0a922ccfc",
+          "outcomes": [
+            "true"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            }
+          ]
+        },
+        "daf33fe4-7c92-4172-ac18-7cfa75b09f94": {
+          "_id": "daf33fe4-7c92-4172-ac18-7cfa75b09f94",
+          "_rev": "-1992784767",
+          "jpToSSMapper": {
+            "TheFirstTwoBooks": "myJSONExample.$..book[0,1]",
+            "AllBooksInStoreThatAreNotExpensive": "myJSONExample.$..book[?(@.price <= $['expensive'])]",
+            "TheAuthorsOfAllBooks": "myJSONExample.store.book[*].author",
+            "LastTwoBooks": "myJSONExample.$..book[-2:]",
+            "TheNumberOfBooks": "myJSONExample.$..book.length()"
+          },
+          "_type": {
+            "_id": "JSONPath",
+            "name": "JSONPath",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "SUCCESS",
+              "displayName": "Success"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "2f1763a8-4a7e-4513-95a8-37f1190fb495": {
+          "_id": "2f1763a8-4a7e-4513-95a8-37f1190fb495",
+          "_rev": "864315175",
+          "nodes": [
+            {
+              "_id": "126eb952-05eb-4829-9d65-548c9089df9b",
+              "nodeType": "ScriptedDecisionNode",
+              "displayName": "Scripted Decision"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Success"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            }
+          ]
+        },
+        "b97aee14-2644-42eb-aa00-e344f33615d3": {
+          "_id": "b97aee14-2644-42eb-aa00-e344f33615d3",
+          "_rev": "1619375164",
+          "nodes": [
+            {
+              "_id": "a273d7c8-c5cc-41c2-a1c8-656eb4be1918",
+              "nodeType": "ScriptedDecisionNode",
+              "displayName": "Scripted Decision"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Error"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "126eb952-05eb-4829-9d65-548c9089df9b": {
+          "_id": "126eb952-05eb-4829-9d65-548c9089df9b",
+          "_rev": "1945530782",
+          "script": "b90d7929-751d-48f4-8ea7-846040028526",
+          "outcomes": [
+            "true"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            }
+          ]
+        },
+        "a273d7c8-c5cc-41c2-a1c8-656eb4be1918": {
+          "_id": "a273d7c8-c5cc-41c2-a1c8-656eb4be1918",
+          "_rev": "1543967610",
+          "script": "b90d7929-751d-48f4-8ea7-846040028526",
+          "outcomes": [
+            "true"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            }
+          ]
+        }
+      },
+      "scripts": {
+        "ec85ea8c-873c-4fcb-9ed8-c2f0a922ccfc": {
+          "_id": "ec85ea8c-873c-4fcb-9ed8-c2f0a922ccfc",
+          "name": "setcomplexjson",
+          "description": null,
+          "script": "\"var jsonBody = {\\n    \\\"store\\\": {\\n        \\\"book\\\": [\\n            {\\n                \\\"category\\\": \\\"reference\\\",\\n                \\\"author\\\": \\\"Nigel Rees\\\",\\n                \\\"title\\\": \\\"Sayings of the Century\\\",\\n                \\\"price\\\": 8.95\\n            },\\n            {\\n                \\\"category\\\": \\\"fiction\\\",\\n                \\\"author\\\": \\\"Evelyn Waugh\\\",\\n                \\\"title\\\": \\\"Sword of Honour\\\",\\n                \\\"price\\\": 12.99\\n            },\\n            {\\n                \\\"category\\\": \\\"fiction\\\",\\n                \\\"author\\\": \\\"Herman Melville\\\",\\n                \\\"title\\\": \\\"Moby Dick\\\",\\n                \\\"isbn\\\": \\\"0-553-21311-3\\\",\\n                \\\"price\\\": 8.99\\n            },\\n            {\\n                \\\"category\\\": \\\"fiction\\\",\\n                \\\"author\\\": \\\"J. R. R. Tolkien\\\",\\n                \\\"title\\\": \\\"The Lord of the Rings\\\",\\n                \\\"isbn\\\": \\\"0-395-19395-8\\\",\\n                \\\"price\\\": 22.99\\n            }\\n        ],\\n        \\\"bicycle\\\": {\\n            \\\"color\\\": \\\"red\\\",\\n            \\\"price\\\": 19.95\\n        }\\n    },\\n    \\\"expensive\\\": 10\\n};\\n\\n\\nnodeState.putShared(\\\"myJSONExample\\\", jsonBody);\\n\\noutcome = \\\"true\\\";\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0,
+          "evaluatorVersion": "1.0"
+        },
+        "b90d7929-751d-48f4-8ea7-846040028526": {
+          "_id": "b90d7929-751d-48f4-8ea7-846040028526",
+          "name": "debug",
+          "description": null,
+          "script": "\"var fr = JavaImporter(\\n  org.forgerock.openam.auth.node.api,\\n  javax.security.auth.callback.TextOutputCallback\\n);\\n\\noutcome = \\\"true\\\";\\n\\nwith (fr) {\\n  if (callbacks.isEmpty()) {\\n    var seperatorCB = new TextOutputCallback(TextOutputCallback.INFORMATION, \\\"================================\\\");\\n    var sharedStateCB = new TextOutputCallback(TextOutputCallback.INFORMATION, \\\"sharedState: \\\" + sharedState.toString());\\n    var transientStateCB = new TextOutputCallback(TextOutputCallback.INFORMATION, \\\"transientState: \\\" + transientState.toString());\\n    var requestHeadersCB = new TextOutputCallback(TextOutputCallback.INFORMATION, \\\"requestHeaders: \\\" + requestHeaders.toString());\\n    var requestParmsCB = new TextOutputCallback(TextOutputCallback.INFORMATION, \\\"requestParameters: \\\" + requestParameters.toString());\\n    var theCallbacks = [sharedStateCB, seperatorCB, transientStateCB, seperatorCB, requestHeadersCB, seperatorCB, requestParmsCB];\\n    action = Action.send(theCallbacks).build();\\n  } else {\\n    action = Action.goTo(\\\"true\\\").build();\\n  }\\n}\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0,
+          "evaluatorVersion": "1.0"
+        }
+      },
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
