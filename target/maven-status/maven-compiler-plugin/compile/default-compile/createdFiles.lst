@@ -1,0 +1,4 @@
+org/forgerock/am/marketplace/jsonpath/JSONPath.class
+org/forgerock/am/marketplace/jsonpath/JSONPath$Config.class
+org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class
+org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class
