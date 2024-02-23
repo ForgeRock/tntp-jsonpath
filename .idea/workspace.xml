@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6950b65f-2720-45bd-b6d7-bb2b6066c067" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.10.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +70,7 @@
       <workItem from="1708544490818" duration="248000" />
       <workItem from="1708544748241" duration="11457000" />
       <workItem from="1708710656404" duration="1254000" />
-      <workItem from="1708721624749" duration="1646000" />
+      <workItem from="1708721624749" duration="2130000" />
     </task>
     <servers />
   </component>
