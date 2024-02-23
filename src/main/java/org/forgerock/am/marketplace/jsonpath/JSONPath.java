@@ -12,10 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import org.forgerock.json.JsonValue;
+import org.forgerock.json.JsonValueException;
 import org.forgerock.openam.annotations.sm.Attribute;
 import org.forgerock.openam.auth.node.api.AbstractDecisionNode;
 import org.forgerock.openam.auth.node.api.Action;
@@ -30,6 +32,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.inject.assistedinject.Assisted;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+
+import static java.util.Collections.emptyList;
 
 
 @Node.Metadata(	outcomeProvider	= JSONPath.JSONPathOutcomeProvider.class, 
@@ -64,14 +68,17 @@ public class JSONPath extends AbstractDecisionNode {
 		try {
 			NodeState nodeState = context.getStateFor(this);
 			Set<String> keys = config.jpToSSMapper().keySet();
-			
+			String static_value = " ";
+
 			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
 				String toSS = i.next();
-				
 				String thisJPath = config.jpToSSMapper().get(toSS);
-				
+				if(thisJPath.startsWith("\"")){
+					nodeState.putShared(toSS,thisJPath);
+					break;
+				}
 				JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
-				
+
 				Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
 
 				Object val = JsonPath.read(document, thisJPath.substring(thisJPath.indexOf('.') + 1, thisJPath.length()));
@@ -95,10 +102,39 @@ public class JSONPath extends AbstractDecisionNode {
 	public static class JSONPathOutcomeProvider implements org.forgerock.openam.auth.node.api.OutcomeProvider {
 		@Override
 		public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
-			ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, JSONPathOutcomeProvider.class.getClassLoader());
-			return ImmutableList.of(
-					new Outcome(SUCCESS, bundle.getString("SuccessOutcome")), 
-					new Outcome(ERROR, bundle.getString("ErrorOutcome")));
+
+			List<Outcome> outcomes;
+			ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, JSONPath.class.getClassLoader());
+
+			try {
+				outcomes = nodeAttributes.get("jpToSSMapper").required()
+						.asList(String.class)
+						.stream()
+						.map(choice -> new Outcome(choice, choice))
+						.collect(Collectors.toList());
+			} catch (JsonValueException e) {
+				outcomes = emptyList();
+			}
+
+			if (outcomes == null) outcomes = emptyList();
+
+			Map<String,Object> keys = nodeAttributes.get("jpToSSMapper").required().asMap();
+			System.out.println("new keys: " + keys);
+			Set<String> keySet = keys.keySet();
+			System.out.println("new keySet: " + keySet);
+
+			for (Iterator<String> i = keySet.iterator(); i.hasNext();) {
+				System.out.println("At top of for loop...");
+				String toSS = i.next();
+				System.out.println("After with toSS..." + toSS);
+				outcomes.add(new Outcome(toSS, toSS));
+				System.out.println("Inside for loop with: " + toSS);
+			}
+
+			System.out.println("Below for loop...");
+			outcomes.add(new Outcome(ERROR, bundle.getString("ErrorOutcome")));
+			System.out.println("Below outcomes: " + outcomes);
+			return outcomes;
 		}
 	}
 }

@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6950b65f-2720-45bd-b6d7-bb2b6066c067" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.10.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +24,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,10 +46,22 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/kcarron/Repositories/tntp-jsonpath&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-53826d6a" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,6 +73,14 @@
       <workItem from="1708456289446" duration="5117000" />
       <workItem from="1708463827246" duration="2680000" />
       <workItem from="1708532381457" duration="57000" />
+      <workItem from="1708535648361" duration="743000" />
+      <workItem from="1708542921447" duration="185000" />
+      <workItem from="1708543129397" duration="1222000" />
+      <workItem from="1708544362004" duration="112000" />
+      <workItem from="1708544490818" duration="248000" />
+      <workItem from="1708544748241" duration="11457000" />
+      <workItem from="1708710656404" duration="1254000" />
+      <workItem from="1708721624749" duration="1646000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,7 @@
   <groupId>org.forgerock.am.marketplace</groupId>
   <artifactId>jsonpath</artifactId>
   <name>JSONPath</name>
-  <version>0.0.10</version>
+  <version>0.0.11</version>
   <description>A utility node for normalizing JSON data</description>
   <build>
     <plugins>
