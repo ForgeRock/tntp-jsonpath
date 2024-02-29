@@ -6,12 +6,7 @@
 
 package org.forgerock.am.marketplace.jsonpath;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -66,23 +61,46 @@ public class JSONPath extends AbstractDecisionNode {
     @Override
 	public Action process(TreeContext context) {
 		try {
+			System.out.println("Top of try");
 			NodeState nodeState = context.getStateFor(this);
 			Set<String> keys = config.jpToSSMapper().keySet();
-			String static_value = " ";
-
+			System.out.println("keys: " + keys);
 			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+				// See if Key is JSON Path
+				// See if Value is JSON Path
+				// Do JSON.read() for both then put Value into Key
+
 				String toSS = i.next();
+				System.out.println("toSS: " + toSS);
+				System.out.println("\n\n");
+
 				String thisJPath = config.jpToSSMapper().get(toSS);
-				if(thisJPath.startsWith("\"")){
-					nodeState.putShared(toSS,thisJPath);
-					break;
-				}
+				System.out.println("thisJPath: " + thisJPath);
+				System.out.println("\n\n");
+
+//				if(thisJPath.startsWith("\"") && !thisJPath.contains("$")){
+//					System.out.println("thisJPath starts with \"...");
+//					nodeState.putShared(toSS,thisJPath);
+//					continue;
+//				}
+//				if(toSS.contains("$") && thisJPath.startsWith("\"")){
+//					System.out.println("Contains $ and value starts with {\"} toSS: "+ toSS + " thisJPath: " + thisJPath);
+//					nodeState.putShared(toSS,thisJPath);
+//					continue;
+//				}
+				//json.country.state = "Indiana";
 				JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
+				System.out.println("thisJV: " + thisJV);
+				System.out.println("\n\n");
 
 				Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
+				System.out.println("Document: " + document);
+				System.out.println("\n\n");
 
 				Object val = JsonPath.read(document, thisJPath.substring(thisJPath.indexOf('.') + 1, thisJPath.length()));
-				
+				System.out.println("val: "+ val);
+				System.out.println("\n\n");
+
 				nodeState.putShared(toSS, val);
 			}
 			return Action.goTo(SUCCESS).build();
@@ -103,37 +121,23 @@ public class JSONPath extends AbstractDecisionNode {
 		@Override
 		public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
 
-			List<Outcome> outcomes;
+			List<Outcome> outcomes = new ArrayList<>();
+
 			ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, JSONPath.class.getClassLoader());
 
-			try {
-				outcomes = nodeAttributes.get("jpToSSMapper").required()
-						.asList(String.class)
-						.stream()
-						.map(choice -> new Outcome(choice, choice))
-						.collect(Collectors.toList());
-			} catch (JsonValueException e) {
-				outcomes = emptyList();
-			}
-
-			if (outcomes == null) outcomes = emptyList();
-
 			Map<String,Object> keys = nodeAttributes.get("jpToSSMapper").required().asMap();
-			System.out.println("new keys: " + keys);
 			Set<String> keySet = keys.keySet();
-			System.out.println("new keySet: " + keySet);
 
 			for (Iterator<String> i = keySet.iterator(); i.hasNext();) {
-				System.out.println("At top of for loop...");
 				String toSS = i.next();
-				System.out.println("After with toSS..." + toSS);
-				outcomes.add(new Outcome(toSS, toSS));
-				System.out.println("Inside for loop with: " + toSS);
+
+				Outcome outcome = new Outcome(toSS, toSS);
+				System.out.println("outcome.id: " + outcome.id + " outcome.displayName: " + outcome.displayName);
+				outcomes.add(outcome);
 			}
 
-			System.out.println("Below for loop...");
-			outcomes.add(new Outcome(ERROR, bundle.getString("ErrorOutcome")));
-			System.out.println("Below outcomes: " + outcomes);
+			Outcome errorOutcome = new Outcome(ERROR, bundle.getString("ErrorOutcome"));
+			outcomes.add(errorOutcome);
 			return outcomes;
 		}
 	}
