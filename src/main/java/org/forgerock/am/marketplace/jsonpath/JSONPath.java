@@ -122,22 +122,31 @@ public class JSONPath extends AbstractDecisionNode {
 		public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
 
 			List<Outcome> outcomes = new ArrayList<>();
-
 			ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, JSONPath.class.getClassLoader());
 
-			Map<String,Object> keys = nodeAttributes.get("jpToSSMapper").required().asMap();
-			Set<String> keySet = keys.keySet();
-
-			for (Iterator<String> i = keySet.iterator(); i.hasNext();) {
-				String toSS = i.next();
-
-				Outcome outcome = new Outcome(toSS, toSS);
-				System.out.println("outcome.id: " + outcome.id + " outcome.displayName: " + outcome.displayName);
-				outcomes.add(outcome);
+			try {
+				outcomes = nodeAttributes.get("jpToSSMapper").required()
+						.asList(String.class)
+						.stream()
+						.map(choice -> new Outcome(choice, choice))
+						.collect(Collectors.toList());
+			} catch (JsonValueException e) {
+				outcomes =  new ArrayList<>();
 			}
 
-			Outcome errorOutcome = new Outcome(ERROR, bundle.getString("ErrorOutcome"));
-			outcomes.add(errorOutcome);
+			if (outcomes == null) outcomes = new ArrayList<>();
+
+			if (nodeAttributes!= null && nodeAttributes.get("jpToSSMapper")!=null &&  nodeAttributes.get("jpToSSMapper").isNotNull()) {
+				Map<String, Object> keys = nodeAttributes.get("jpToSSMapper").required().asMap();
+				Set<String> keySet = keys.keySet();
+				for (Iterator<String> i = keySet.iterator(); i.hasNext();) {
+					String toSS = i.next();
+					outcomes.add(new Outcome(toSS, toSS));
+				}
+			}
+
+			outcomes.add(new Outcome(ERROR, bundle.getString("ErrorOutcome")));
+
 			return outcomes;
 		}
 	}

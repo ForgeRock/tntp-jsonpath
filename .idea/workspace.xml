@@ -12,11 +12,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.13.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.13.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,11 +103,28 @@
       <workItem from="1708973308472" duration="3624000" />
       <workItem from="1709044729352" duration="4265000" />
       <workItem from="1709063422829" duration="1728000" />
-      <workItem from="1709134256902" duration="8003000" />
+      <workItem from="1709134256902" duration="12678000" />
+      <workItem from="1709234593683" duration="884000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
