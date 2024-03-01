@@ -40,7 +40,7 @@ public class JSONPath extends AbstractDecisionNode {
     private final Logger logger = LoggerFactory.getLogger(JSONPath.class);
     private final Config config;
 	private String loggerPrefix = "[JSONPath]" + JSONPathPlugin.logAppender;
-	private static final String SUCCESS = "SUCCESS";
+	private static final String NEXT = "NEXT";
 	private static final String ERROR = "ERROR";
 	private static final String BUNDLE = JSONPath.class.getName();
 
@@ -50,7 +50,10 @@ public class JSONPath extends AbstractDecisionNode {
      */
     public interface Config {
 		@Attribute(order = 100)
-		Map<String, String> jpToSSMapper();	
+		Map<String, String> insertToSS();
+
+		@Attribute(order = 200)
+		Map<String, String> jpToSSMapper();
     }
 
     @Inject
@@ -63,47 +66,37 @@ public class JSONPath extends AbstractDecisionNode {
 		try {
 			System.out.println("Top of try");
 			NodeState nodeState = context.getStateFor(this);
-			Set<String> keys = config.jpToSSMapper().keySet();
+			//Insert into SS
+			Set<String> keys = config.insertToSS().keySet();
 			System.out.println("keys: " + keys);
-			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
-				// See if Key is JSON Path
-				// See if Value is JSON Path
-				// Do JSON.read() for both then put Value into Key
 
+			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
 				String toSS = i.next();
 				System.out.println("toSS: " + toSS);
 				System.out.println("\n\n");
 
-				String thisJPath = config.jpToSSMapper().get(toSS);
-				System.out.println("thisJPath: " + thisJPath);
+				String val = config.insertToSS().get(toSS);
+				System.out.println("thisJPath: " + val);
 				System.out.println("\n\n");
-
-//				if(thisJPath.startsWith("\"") && !thisJPath.contains("$")){
-//					System.out.println("thisJPath starts with \"...");
-//					nodeState.putShared(toSS,thisJPath);
-//					continue;
-//				}
-//				if(toSS.contains("$") && thisJPath.startsWith("\"")){
-//					System.out.println("Contains $ and value starts with {\"} toSS: "+ toSS + " thisJPath: " + thisJPath);
-//					nodeState.putShared(toSS,thisJPath);
-//					continue;
-//				}
-				//json.country.state = "Indiana";
-				JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
-				System.out.println("thisJV: " + thisJV);
-				System.out.println("\n\n");
-
-				Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
-				System.out.println("Document: " + document);
-				System.out.println("\n\n");
-
-				Object val = JsonPath.read(document, thisJPath.substring(thisJPath.indexOf('.') + 1, thisJPath.length()));
-				System.out.println("val: "+ val);
-				System.out.println("\n\n");
-
 				nodeState.putShared(toSS, val);
 			}
-			return Action.goTo(SUCCESS).build();
+			nodeState = context.getStateFor(this);
+			Set<String> Jkeys = config.jpToSSMapper().keySet();
+
+			for (Iterator<String> i = Jkeys.iterator(); i.hasNext();) {
+				String toSS = i.next();
+				System.out.println("toSS: " + toSS);
+				String thisJPath = config.jpToSSMapper().get(toSS);
+				System.out.println("thisJPath: " + thisJPath);
+				JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
+				System.out.println("thisJV: " + thisJV);
+				Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
+				System.out.println("document: " + document);
+				Object val = JsonPath.read(document, thisJPath.substring(thisJPath.indexOf('.') + 1, thisJPath.length()));
+				System.out.println("val: " + val);
+				nodeState.putShared(toSS, val);
+			}
+			return Action.goTo(NEXT).build();
 		} catch (Exception ex) {
 			String stackTrace = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(ex);
 			logger.error(loggerPrefix + "Exception occurred: " + stackTrace);
@@ -144,7 +137,7 @@ public class JSONPath extends AbstractDecisionNode {
 					outcomes.add(new Outcome(toSS, toSS));
 				}
 			}
-
+			outcomes.add(new Outcome(NEXT, bundle.getString("NextOutcome")));
 			outcomes.add(new Outcome(ERROR, bundle.getString("ErrorOutcome")));
 
 			return outcomes;
