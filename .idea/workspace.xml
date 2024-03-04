@@ -12,11 +12,14 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/forgerock/am/marketplace/jsonpath/JSONPath.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/forgerock/am/marketplace/jsonpath/JSONPath.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.16.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.16.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +109,10 @@
       <workItem from="1709063422829" duration="1728000" />
       <workItem from="1709134256902" duration="12678000" />
       <workItem from="1709234593683" duration="884000" />
-      <workItem from="1709235569157" duration="2827000" />
+      <workItem from="1709235569157" duration="14697000" />
+      <workItem from="1709328670015" duration="70000" />
+      <workItem from="1709328820876" duration="1360000" />
+      <workItem from="1709563256087" duration="8258000" />
     </task>
     <servers />
   </component>

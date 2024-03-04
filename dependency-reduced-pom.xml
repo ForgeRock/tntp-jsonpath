@@ -4,7 +4,7 @@
   <groupId>org.forgerock.am.marketplace</groupId>
   <artifactId>jsonpath</artifactId>
   <name>JSONPath</name>
-  <version>0.0.16</version>
+  <version>0.0.17</version>
   <description>A utility node for normalizing JSON data</description>
   <build>
     <plugins>
@@ -36,6 +36,13 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>16</source>
+          <target>16</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>

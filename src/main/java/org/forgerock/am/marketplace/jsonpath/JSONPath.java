@@ -50,10 +50,10 @@ public class JSONPath extends AbstractDecisionNode {
      */
     public interface Config {
 		@Attribute(order = 100)
-		Map<String, String> insertToSS();
+			Map<String, String> insertToSS();
 
 		@Attribute(order = 200)
-		Map<String, String> jpToSSMapper();
+			Map<String, String> jpToOutcomeMapper();
     }
 
     @Inject
@@ -64,29 +64,27 @@ public class JSONPath extends AbstractDecisionNode {
     @Override
 	public Action process(TreeContext context) {
 		try {
-			System.out.println("Top of try");
 			NodeState nodeState = context.getStateFor(this);
 			//Insert into SS
 			Set<String> keys = config.insertToSS().keySet();
-			System.out.println("keys: " + keys);
 
 			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
 				String toSS = i.next();
-				System.out.println("toSS: " + toSS);
-				System.out.println("\n\n");
-
 				String val = config.insertToSS().get(toSS);
-				System.out.println("thisJPath: " + val);
-				System.out.println("\n\n");
 				nodeState.putShared(toSS, val);
 			}
-			nodeState = context.getStateFor(this);
-			Set<String> Jkeys = config.jpToSSMapper().keySet();
+
+			System.out.println("Above JKeys...");
+			Set<String> Jkeys = config.jpToOutcomeMapper().keySet();
+			System.out.println("Below JKeys and Jkeys is "+Jkeys+ " ...");
 
 			for (Iterator<String> i = Jkeys.iterator(); i.hasNext();) {
+
+				System.out.println("Inside for loop...");
 				String toSS = i.next();
 				System.out.println("toSS: " + toSS);
-				String thisJPath = config.jpToSSMapper().get(toSS);
+
+				String thisJPath = config.jpToOutcomeMapper().get(toSS);
 				System.out.println("thisJPath: " + thisJPath);
 				JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
 				System.out.println("thisJV: " + thisJV);
@@ -96,7 +94,11 @@ public class JSONPath extends AbstractDecisionNode {
 				System.out.println("val: " + val);
 				nodeState.putShared(toSS, val);
 			}
-			return Action.goTo(NEXT).build();
+
+			System.out.println("config.jpToOutcomeMapper: " + config.jpToOutcomeMapper());
+			String outcome = calculateOutcome(config.jpToOutcomeMapper(), context);
+			System.out.println("outcome of node: " + outcome);
+			return Action.goTo(outcome).build();
 		} catch (Exception ex) {
 			String stackTrace = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(ex);
 			logger.error(loggerPrefix + "Exception occurred: " + stackTrace);
@@ -113,12 +115,11 @@ public class JSONPath extends AbstractDecisionNode {
 	public static class JSONPathOutcomeProvider implements org.forgerock.openam.auth.node.api.OutcomeProvider {
 		@Override
 		public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
-
 			List<Outcome> outcomes = new ArrayList<>();
 			ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, JSONPath.class.getClassLoader());
 
 			try {
-				outcomes = nodeAttributes.get("jpToSSMapper").required()
+				outcomes = nodeAttributes.get("jpToOutcomeMapper").required()
 						.asList(String.class)
 						.stream()
 						.map(choice -> new Outcome(choice, choice))
@@ -129,8 +130,8 @@ public class JSONPath extends AbstractDecisionNode {
 
 			if (outcomes == null) outcomes = new ArrayList<>();
 
-			if (nodeAttributes!= null && nodeAttributes.get("jpToSSMapper")!=null &&  nodeAttributes.get("jpToSSMapper").isNotNull()) {
-				Map<String, Object> keys = nodeAttributes.get("jpToSSMapper").required().asMap();
+			if (nodeAttributes!= null && nodeAttributes.get("jpToOutcomeMapper")!=null &&  nodeAttributes.get("jpToOutcomeMapper").isNotNull()) {
+				Map<String, Object> keys = nodeAttributes.get("jpToOutcomeMapper").required().asMap();
 				Set<String> keySet = keys.keySet();
 				for (Iterator<String> i = keySet.iterator(); i.hasNext();) {
 					String toSS = i.next();
@@ -143,4 +144,33 @@ public class JSONPath extends AbstractDecisionNode {
 			return outcomes;
 		}
 	}
+
+private String calculateOutcome(Map <String,String> outcomes,  TreeContext context) {
+	String result = null;
+	NodeState nodeState = context.getStateFor(this);
+	Set<String> Jkeys = config.jpToOutcomeMapper().keySet();
+
+	for (Iterator<String> i = Jkeys.iterator(); i.hasNext();) {
+		String toSS = i.next();
+
+		String thisJPath = config.jpToOutcomeMapper().get(toSS);
+
+		JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
+
+		Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
+
+		List<String> vals = JsonPath.read(document, thisJPath.substring(thisJPath.indexOf('.') + 1, thisJPath.length()));
+
+		if (vals.size() > 0) {
+			result = toSS;
+			break;  // Exit at first matching outcome
+		}
+	}
+
+	if (result == null)
+		return "NEXT";
+
+	return result;
 }
+}
+

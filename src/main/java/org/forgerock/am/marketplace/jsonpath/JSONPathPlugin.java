@@ -47,7 +47,7 @@ import org.slf4j.LoggerFactory;
  */
 public class JSONPathPlugin extends AbstractNodeAmPlugin {
 
-	static private String currentVersion = "0.0.16";
+	static private String currentVersion = "0.0.17";
 	static final String logAppender = "[Version: " + currentVersion + "][Marketplace] ";
 	private final Logger logger = LoggerFactory.getLogger(JSONPathPlugin.class);
 	private String loggerPrefix = "[JSONPathPlugin]" + JSONPathPlugin.logAppender;
