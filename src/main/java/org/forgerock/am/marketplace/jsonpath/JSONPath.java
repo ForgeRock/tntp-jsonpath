@@ -74,30 +74,26 @@ public class JSONPath extends AbstractDecisionNode {
 				nodeState.putShared(toSS, val);
 			}
 
-			System.out.println("Above JKeys...");
 			Set<String> Jkeys = config.jpToOutcomeMapper().keySet();
-			System.out.println("Below JKeys and Jkeys is "+Jkeys+ " ...");
-
+			int matches = 0;
 			for (Iterator<String> i = Jkeys.iterator(); i.hasNext();) {
-
-				System.out.println("Inside for loop...");
 				String toSS = i.next();
-				System.out.println("toSS: " + toSS);
-
 				String thisJPath = config.jpToOutcomeMapper().get(toSS);
-				System.out.println("thisJPath: " + thisJPath);
 				JsonValue thisJV = nodeState.get(thisJPath.substring(0, thisJPath.indexOf('.')));
-				System.out.println("thisJV: " + thisJV);
 				Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
-				System.out.println("document: " + document);
 				Object val = JsonPath.read(document, thisJPath.substring(thisJPath.indexOf('.') + 1, thisJPath.length()));
-				System.out.println("val: " + val);
+
+				if(val != null){
+					matches = matches + 1;
+				}
+
 				nodeState.putShared(toSS, val);
 			}
 
-			System.out.println("config.jpToOutcomeMapper: " + config.jpToOutcomeMapper());
 			String outcome = calculateOutcome(config.jpToOutcomeMapper(), context);
-			System.out.println("outcome of node: " + outcome);
+			if(matches > 1){
+				outcome = ERROR;
+			}
 			return Action.goTo(outcome).build();
 		} catch (Exception ex) {
 			String stackTrace = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(ex);
