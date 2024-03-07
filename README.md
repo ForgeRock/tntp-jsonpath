@@ -1,6 +1,6 @@
 # JSONPath
 
-A simple authentication node for ForgeRock's [Identity Platform][forgerock_platform] 7.4.0 and above. This node... **SHORT DESCRIPTION HERE**
+A simple authentication node for ForgeRock's [Identity Platform][forgerock_platform] 7.4.0 and above. This node implements JSON Path filter search to grab values or execute an expression on a JSON Object in Shared State
 
 ## Inputs
 
@@ -24,9 +24,12 @@ The value is the JSON Path (e.g. myJSONExample.$..book.length())
     <th>Usage</th>
 </thead>
 <tr>
-<td>Mapping</td>
-<td>Key is new shared state key, and the value is to JSONPath</td>
-
+<td>Insert into Shared State</td>
+<td>Values to insert into Shared State. Wrapping value in " " will put that value straight into Shared State. Don't wrap to do JSON Path filter search.</td>
+</tr>
+<tr>
+<td>JSON Path filter to become outcome</td>
+<td>JSON Path that will become the outcome.</td>
 </tr>
 </table>
 
@@ -35,7 +38,12 @@ The value is the JSON Path (e.g. myJSONExample.$..book.length())
 Key in Shared State with the value of the Json Path expression
 
 ## Outcomes
-`Success`
+
+`JSON Path`
+
+Filter successfully matched
+
+`Next`
 
 Successfully created a new value in the Shared State with the returned value of the JSON Path expression
 

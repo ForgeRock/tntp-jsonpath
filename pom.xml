@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- * This code is to be used exclusively in connection with ForgeRock’s software or services. 
- * ForgeRock only offers ForgeRock software or services to legal entities who have entered 
- * into a binding license agreement with ForgeRock. 
- * 
+ * This code is to be used exclusively in connection with Ping Identity Corporation software or services.
+ * Ping Identity Corporation only offers such software or services to legal entities who have entered
+ * into a binding license agreement with Ping Identity Corporation.
+ *
 -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -19,7 +20,7 @@
 	<description>A utility node for normalizing JSON data</description>
 
 	<properties>
-		<am.version>7.4.0</am.version>
+		<am.version>LATEST</am.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

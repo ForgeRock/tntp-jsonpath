@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6950b65f-2720-45bd-b6d7-bb2b6066c067" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/forgerock/am/marketplace/jsonpath/JSONPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath$JSONPathOutcomeProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/forgerock/am/marketplace/jsonpath/JSONPathPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jsonpath-0.0.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-jsonpath-0.0.17.jar" beforeDir="false" />
-    </list>
+    <list default="true" id="6950b65f-2720-45bd-b6d7-bb2b6066c067" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +97,7 @@
       <workItem from="1709328670015" duration="70000" />
       <workItem from="1709328820876" duration="1360000" />
       <workItem from="1709563256087" duration="9252000" />
-      <workItem from="1709667167493" duration="331000" />
+      <workItem from="1709667167493" duration="1048000" />
     </task>
     <servers />
   </component>

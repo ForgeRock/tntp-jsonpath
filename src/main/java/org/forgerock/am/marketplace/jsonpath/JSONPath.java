@@ -1,7 +1,7 @@
 /*
- * This code is to be used exclusively in connection with ForgeRock’s software or services. 
- * ForgeRock only offers ForgeRock software or services to legal entities who have entered 
- * into a binding license agreement with ForgeRock. 
+ * This code is to be used exclusively in connection with Ping Identity Corporation software or services.
+ * Ping Identity Corporation only offers such software or services to legal entities who have entered
+ * into a binding license agreement with Ping Identity Corporation.
  */
 
 package org.forgerock.am.marketplace.jsonpath;
@@ -88,10 +88,12 @@ public class JSONPath extends AbstractDecisionNode {
 				}
 
 				nodeState.putShared(toSS, val);
-			}
 
+			}
 			String outcome = calculateOutcome(config.jpToOutcomeMapper(), context);
+			logger.debug("Outcome: " + outcome);
 			if(matches > 1){
+				logger.error("More than one filter matched. Going to error...");
 				outcome = ERROR;
 			}
 			return Action.goTo(outcome).build();
