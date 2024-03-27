@@ -1,8 +1,9 @@
 /*
- * This code is to be used exclusively in connection with ForgeRock’s software or services. 
- * ForgeRock only offers ForgeRock software or services to legal entities who have entered 
- * into a binding license agreement with ForgeRock. 
+ * This code is to be used exclusively in connection with Ping Identity Corporation software or services.
+ * Ping Identity Corporation only offers such software or services to legal entities who have entered
+ * into a binding license agreement with Ping Identity Corporation.
  */
+
 
 package org.forgerock.am.marketplace.jsonpath;
 
@@ -47,7 +48,7 @@ import org.slf4j.LoggerFactory;
  */
 public class JSONPathPlugin extends AbstractNodeAmPlugin {
 
-	static private String currentVersion = "0.0.10";
+	static private String currentVersion = "0.0.17";
 	static final String logAppender = "[Version: " + currentVersion + "][Marketplace] ";
 	private final Logger logger = LoggerFactory.getLogger(JSONPathPlugin.class);
 	private String loggerPrefix = "[JSONPathPlugin]" + JSONPathPlugin.logAppender;
