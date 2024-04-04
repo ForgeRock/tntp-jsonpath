@@ -76,7 +76,16 @@ public class JSONPath extends AbstractDecisionNode {
 			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
 				String toSS = i.next();
 				String val = config.insertToSS().get(toSS);
-				nodeState.putShared(toSS, val);
+				if(val.startsWith("\"")){
+					nodeState.putShared(toSS, val);
+					continue;
+				}
+
+				JsonValue thisJV = nodeState.get(val.substring(0, val.indexOf('.')));
+				Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
+				Object jsonpath_val = JsonPath.read(document, val.substring(val.indexOf('.') + 1, val.length()));
+
+				nodeState.putShared(toSS, jsonpath_val);
 			}
 
 			Set<String> Jkeys = config.jpToOutcomeMapper().keySet();
@@ -91,9 +100,6 @@ public class JSONPath extends AbstractDecisionNode {
 				if(val != null){
 					matches = matches + 1;
 				}
-
-				nodeState.putShared(toSS, val);
-
 			}
 			String outcome = calculateOutcome(config.jpToOutcomeMapper(), context);
 			logger.debug("Outcome: " + outcome);
