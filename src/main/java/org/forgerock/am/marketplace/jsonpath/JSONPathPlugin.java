@@ -1,7 +1,9 @@
 /*
- * This code is to be used exclusively in connection with Ping Identity Corporation software or services.
- * Ping Identity Corporation only offers such software or services to legal entities who have entered
- * into a binding license agreement with Ping Identity Corporation.
+ * This code is to be used exclusively in connection with Ping Identity Corporation software or services. 
+ * Ping Identity Corporation only offers such software or services to legal entities who have entered into 
+ * a binding license agreement with Ping Identity Corporation.
+ *
+ * Copyright 2024 Ping Identity Corporation. All Rights Reserved
  */
 
 
@@ -13,6 +15,7 @@ import java.util.Map;
 import org.forgerock.openam.auth.node.api.AbstractNodeAmPlugin;
 import org.forgerock.openam.auth.node.api.Node;
 import org.forgerock.openam.plugins.PluginException;
+import org.forgerock.openam.plugins.StartupType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +51,7 @@ import org.slf4j.LoggerFactory;
  */
 public class JSONPathPlugin extends AbstractNodeAmPlugin {
 
-	static private String currentVersion = "0.0.17";
+	static private String currentVersion = "0.0.18";
 	static final String logAppender = "[Version: " + currentVersion + "][Marketplace] ";
 	private final Logger logger = LoggerFactory.getLogger(JSONPathPlugin.class);
 	private String loggerPrefix = "[JSONPathPlugin]" + JSONPathPlugin.logAppender;
@@ -85,8 +88,8 @@ public class JSONPathPlugin extends AbstractNodeAmPlugin {
      * @param startupType The type of startup that is taking place.
      */
 	@Override
-	public void onStartup() throws PluginException {
-		super.onStartup();
+	public void onStartup(StartupType startupType) throws PluginException {
+		super.onStartup(startupType);
 	}
 
     /** 

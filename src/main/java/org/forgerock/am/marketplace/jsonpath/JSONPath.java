@@ -1,12 +1,20 @@
 /*
- * This code is to be used exclusively in connection with Ping Identity Corporation software or services.
- * Ping Identity Corporation only offers such software or services to legal entities who have entered
- * into a binding license agreement with Ping Identity Corporation.
+ * This code is to be used exclusively in connection with Ping Identity Corporation software or services. 
+ * Ping Identity Corporation only offers such software or services to legal entities who have entered into 
+ * a binding license agreement with Ping Identity Corporation.
+ *
+ * Copyright 2024 Ping Identity Corporation. All Rights Reserved
  */
 
 package org.forgerock.am.marketplace.jsonpath;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -23,12 +31,9 @@ import org.forgerock.util.i18n.PreferredLocales;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ImmutableList;
 import com.google.inject.assistedinject.Assisted;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
-
-import static java.util.Collections.emptyList;
 
 
 @Node.Metadata(	outcomeProvider	= JSONPath.JSONPathOutcomeProvider.class, 
@@ -99,9 +104,9 @@ public class JSONPath extends AbstractDecisionNode {
 			return Action.goTo(outcome).build();
 		} catch (Exception ex) {
 			String stackTrace = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(ex);
-			logger.error(loggerPrefix + "Exception occurred: " + stackTrace);
-			context.getStateFor(this).putShared(loggerPrefix + "Exception", new Date() + ": " + ex.getMessage());
-			context.getStateFor(this).putShared(loggerPrefix + "StackTrace", new Date() + ": " + stackTrace);
+			logger.error(loggerPrefix + "Exception occurred: ", ex);
+			context.getStateFor(this).putTransient(loggerPrefix + "Exception", new Date() + ": " + ex.getMessage());
+			context.getStateFor(this).putTransient(loggerPrefix + "StackTrace", new Date() + ": " + stackTrace);
 			return Action.goTo(ERROR).withHeader("Error occurred").withErrorMessage(ex.getMessage()).build();
 		}
 	}
