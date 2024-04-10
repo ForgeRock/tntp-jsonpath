@@ -101,12 +101,16 @@ public class JSONPath extends AbstractDecisionNode {
 					matches = matches + 1;
 				}
 			}
-			String outcome = calculateOutcome(config.jpToOutcomeMapper(), context);
-			logger.debug("Outcome: " + outcome);
+			
 			if(matches > 1){
-				logger.error("More than one filter matched. Going to error...");
-				outcome = ERROR;
+				logger.error(loggerPrefix + "More than one filter matched. Going to error...");
+				nodeState.putShared(loggerPrefix.trim() + "[ERROR]", "More than one filter matched");
+				return Action.goTo(ERROR).build();
 			}
+			
+			String outcome = calculateOutcome(config.jpToOutcomeMapper(), context);
+			logger.debug(loggerPrefix + "Outcome: " + outcome);
+
 			return Action.goTo(outcome).build();
 		} catch (Exception ex) {
 			String stackTrace = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(ex);
@@ -177,7 +181,7 @@ private String calculateOutcome(Map <String,String> outcomes,  TreeContext conte
 	}
 
 	if (result == null)
-		return "NEXT";
+		return NEXT;
 
 	return result;
 }
