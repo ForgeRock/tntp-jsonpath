@@ -91,7 +91,7 @@ Key in Shared State with static value or Json Path expression value
 
 JSON Path filter successfully matched
 
-`Next`
+`Default Response`
 
 Successfully created a new value in the Shared State with the returned value of the JSON Path expression
 
