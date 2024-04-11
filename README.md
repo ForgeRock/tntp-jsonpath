@@ -83,7 +83,7 @@ Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/REA
 
 ## Outputs
 
-Key in Shared State with static value or Json Path expression value
+Key in Shared State or Object Attributes with static value or Json Path expression value
 
 ## Outcomes
 
