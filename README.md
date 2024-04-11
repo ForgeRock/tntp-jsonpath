@@ -16,6 +16,34 @@ The key will be the new shared state item name
 
 The value is the JSON Path (e.g. myJSONExample.$..book.length())
 
+## Compatibility
+
+<table>
+  <colgroup>
+    <col>
+    <col>
+  </colgroup>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Compatible?</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><p>ForgeRock Identity Cloud</p></td>
+    <td><p><span>Yes</span></p></td>
+  </tr>
+  <tr>
+    <td><p>ForgeRock Access Management (self-managed)</p></td>
+    <td><p><span>Yes</span></p></td>
+  </tr>
+  <tr>
+    <td><p>ForgeRock Identity Platform (self-managed)</p></td>
+    <td><p><span>Yes</span></p></td>
+  </tr>
+  </tbody>
+</table>
 
 ## Configuration
 <table>
@@ -25,7 +53,9 @@ The value is the JSON Path (e.g. myJSONExample.$..book.length())
 </thead>
 <tr>
 <td>Insert into Shared State</td>
-<td>Values to insert into Shared State. Wrapping value in " " will put that value straight into Shared State. Don't wrap to do JSON Path filter search.</td>
+<td>Key - variable name to be inserted into Shared State.<br>
+    Value - Value to be inserted into Shared State. Wrap value in "" to insert static value into Shared State. Value can JSON Path value as well
+</td>
 </tr>
 <tr>
 <td>JSON Path filter to become outcome</td>
