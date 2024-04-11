@@ -102,7 +102,7 @@ An error occurred causing the Node to fail. Check the logs to see more details o
 
 ## Examples
 
-![ScreenShot](./example.png)
+![ScreenShot](./example2.png)
 
 
 
