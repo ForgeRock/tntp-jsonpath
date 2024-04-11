@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+import java.util.LinkedHashMap;
 import javax.inject.Inject;
 
 import org.forgerock.json.JsonValue;
@@ -76,6 +76,33 @@ public class JSONPath extends AbstractDecisionNode {
 			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
 				String toSS = i.next();
 				String val = config.insertToSS().get(toSS);
+
+				if (toSS.toLowerCase().startsWith("objectattributes.")) {
+					//then this is a objectAttributes modification
+					JsonValue objectAttributes = nodeState.get("objectAttributes");
+
+					if (objectAttributes==null || objectAttributes.isNull()) {
+						objectAttributes = new JsonValue(new LinkedHashMap<String, Object>(1));
+					}
+
+					toSS = toSS.replace("objectAttributes.", "");
+
+
+					if(val.startsWith("\"")) {
+						objectAttributes.add(toSS, val);
+						nodeState.putShared("objectAttributes", objectAttributes);
+						continue;
+					}
+
+					JsonValue thisJV = nodeState.get(val.substring(0, val.indexOf('.')));
+					Object document = Configuration.defaultConfiguration().jsonProvider().parse(thisJV.toString());
+					Object jsonpath_val = JsonPath.read(document, val.substring(val.indexOf('.') + 1, val.length()));
+
+					objectAttributes.add(toSS, jsonpath_val);
+					nodeState.putShared("objectAttributes", objectAttributes);
+					continue;
+				}
+
 				if(val.startsWith("\"")){
 					nodeState.putShared(toSS, val);
 					continue;
