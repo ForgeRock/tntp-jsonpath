@@ -37,7 +37,7 @@ Key in shared state that's value is a JSON Object
 
 ## How to use 
 
-To use JSONpath expressions for variable subsitution, use an expression of the form `<shared state variable>.$.<path>`
+To use JSONpath expressions for the Node, use an expression of the form `<shared state variable>.$.<path>`
 
 for example, given a shared state variable called "objectAttributes" containing this JSON data:
 
@@ -55,22 +55,11 @@ for example, given a shared state variable called "objectAttributes" containing 
 the "firstname" and "lastname" attributes can be selected as `${objectAtttributes.$.firstname}` and `${objectAttributes.$.lastname}` respectively.
 The last booking ID can be selected as `${objectAttributes.$.bookingIDs[2]}` or `${objectAttributes.$.bookingIDs[-1]}`.
 
-Similar notation can be used with the JSON Response Handler property to save returned JSON response values to shared state.
-For example, if the JSON object above is the response to a REST API call, then a JSON Response Handler configuration with key/value as follows will select the telephone number from the response and save it to shared state variable "phone":
-
-- Key: phone
-- Value: $.telephoneNumber
-
-The JSON Response Outcome Handler can be filtered with a suitable JSONpath expression to look for matching responses.
-A matching outcome is triggered when the JSONpath expression, when applied to an array containing the JSON response, results in a non-empty array, i.e., the expression finds at least one match.
-For example, if the JSON object above is the response to a REST API call, then a JSON Response Outcome Handler configuration with key/value as follows will trigger the "Priority" outcome:
-
+An example to filter all of the `membershipTier`'s that are `platinum` from the `objectAtttributes` JSON Object into a Key named `Priority` into the Shared State
 - Key: Priority
-- $.[?(@.membershipTier == 'platinum')]
+- objectAtttributes.$.[?(@.membershipTier == 'platinum')]
 
 Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/README.md) expressions can be found [here](https://github.com/json-path/JsonPath/blob/master/README.md).
-
-
 
 
 
