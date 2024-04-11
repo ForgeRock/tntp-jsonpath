@@ -71,8 +71,8 @@ Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/REA
 </thead>
 <tr>
 <td>Insert into Shared State</td>
-<td>Key - variable name to be inserted into Shared State.<br>
-    Value - Value to be inserted into Shared State. Wrap value in "" to insert static value into Shared State. Value can JSON Path value as well
+<td>Key - variable name to be inserted into Shared State or Object Attributes. To insert into Object Attributes; use `objectAttributes.{key}` format<br>
+    Value - Value to be inserted into Shared State or Object Attributes. Wrap value in "" to insert static value into Shared State. Value can JSON Path value as well
 </td>
 </tr>
 <tr>
