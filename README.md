@@ -1,10 +1,10 @@
 # JSONPath
 
-A simple authentication node for ForgeRock's [Identity Platform][forgerock_platform] 7.4.0 and above. This node implements JSON Path filter search to grab values or execute an expression on a JSON Object in Shared State
+A simple authentication node for Access Management 7.4.0 and above. This node implements JSON Path filter search to grab values or execute an expression on a JSON Object in the Journey State
 
 ## Inputs
 
-Key in shared state that's value is a JSON Object
+Key in the journey state containing a value that is a JSON Object
 
 ## Compatibility
 
