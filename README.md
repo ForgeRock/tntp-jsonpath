@@ -59,11 +59,11 @@ An example to filter all of the `membershipTier`'s that are `platinum` from the 
 - Key: Priority
 - myJson.$.[?(@.membershipTier == 'platinum')]
 
-  To insert into Object Attributes start the Key with `objectAttributes` followed by `.keyName`
+To insert into Object Attributes start the Key with `objectAttributes` followed by `.keyName`
 An example to filter all of the `membershipTier`'s that are `platinum` from the `myJson` JSON Object into a Key named `Priority` into Object Attributes
 
-  - Key: objectAttribute.Priority
-  - myJson.$.[?(@.membershipTier == 'platinum')]
+- Key: objectAttribute.Priority
+- myJson.$.[?(@.membershipTier == 'platinum')]
 
 Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/README.md) expressions can be found [here](https://github.com/json-path/JsonPath/blob/master/README.md).
 
