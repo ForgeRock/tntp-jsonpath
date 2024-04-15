@@ -52,8 +52,8 @@ for example, given a shared state variable called "myJson" containing this JSON 
 }
 ```
 
-the "firstname" and "lastname" attributes can be selected as `${myJson.$.firstname}` and `${myJson.$.lastname}` respectively.
-The last booking ID can be selected as `${myJson.$.bookingIDs[2]}` or `${myJson.$.bookingIDs[-1]}`.
+the "firstname" and "lastname" attributes can be selected as `myJson.$.firstname` and `myJson.$.lastname` respectively.
+The last booking ID can be selected as `myJson.$.bookingIDs[2]` or `myJson.$.bookingIDs[-1]`.
 
 An example to filter all of the `membershipTier`'s that are `platinum` from the `myJson` JSON Object into a Key named `Priority` into the Shared State
 - Key: Priority
@@ -62,7 +62,7 @@ An example to filter all of the `membershipTier`'s that are `platinum` from the 
 To insert into Object Attributes start the Key with `objectAttributes` followed by `.keyName`
 An example to filter all of the `membershipTier`'s that are `platinum` from the `myJson` JSON Object into a Key named `Priority` into Object Attributes
 
-- Key: objectAttribute.Priority
+- Key: objectAttributes.Priority
 - myJson.$.[?(@.membershipTier == 'platinum')]
 
 Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/README.md) expressions can be found [here](https://github.com/json-path/JsonPath/blob/master/README.md).
