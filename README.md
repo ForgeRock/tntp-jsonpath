@@ -39,7 +39,7 @@ Key in shared state that's value is a JSON Object
 
 To use JSONpath expressions for the Node, use an expression of the form `<shared state variable>.$.<path>`
 
-for example, given a shared state variable called "objectAttributes" containing this JSON data:
+for example, given a shared state variable called "myJson" containing this JSON data:
 
 ```
 {
@@ -52,12 +52,18 @@ for example, given a shared state variable called "objectAttributes" containing 
 }
 ```
 
-the "firstname" and "lastname" attributes can be selected as `${objectAtttributes.$.firstname}` and `${objectAttributes.$.lastname}` respectively.
-The last booking ID can be selected as `${objectAttributes.$.bookingIDs[2]}` or `${objectAttributes.$.bookingIDs[-1]}`.
+the "firstname" and "lastname" attributes can be selected as `${myJson.$.firstname}` and `${myJson.$.lastname}` respectively.
+The last booking ID can be selected as `${myJson.$.bookingIDs[2]}` or `${myJson.$.bookingIDs[-1]}`.
 
-An example to filter all of the `membershipTier`'s that are `platinum` from the `objectAtttributes` JSON Object into a Key named `Priority` into the Shared State
+An example to filter all of the `membershipTier`'s that are `platinum` from the `myJson` JSON Object into a Key named `Priority` into the Shared State
 - Key: Priority
-- objectAtttributes.$.[?(@.membershipTier == 'platinum')]
+- myJson.$.[?(@.membershipTier == 'platinum')]
+
+  To insert into Object Attributes start the Key with `objectAttributes` followed by `.keyName`
+An example to filter all of the `membershipTier`'s that are `platinum` from the `myJson` JSON Object into a Key named `Priority` into Object Attributes
+
+  - Key: objectAttribute.Priority
+  - myJson.$.[?(@.membershipTier == 'platinum')]
 
 Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/README.md) expressions can be found [here](https://github.com/json-path/JsonPath/blob/master/README.md).
 
@@ -70,7 +76,7 @@ Full details of [JSONpath](https://github.com/json-path/JsonPath/blob/master/REA
     <th>Usage</th>
 </thead>
 <tr>
-<td>Insert into Shared State</td>
+<td>Insert into Shared State or Object Attributes</td>
 <td>Key - variable name to be inserted into Shared State or Object Attributes. To insert into Object Attributes; use <code>objectAttributes.{key}</code> format<br>
     Value - Value to be inserted into Shared State or Object Attributes. Wrap value in "" to insert static value into Shared State. Value can JSON Path value as well
 </td>
