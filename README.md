@@ -1,6 +1,6 @@
 # JSONPath
 
-A simple authentication node for Access Management 7.4.0 and above. This node implements JSON Path filter search to grab values or execute an expression on a JSON Object in the Journey State
+A simple authentication node for Access Management 7.4.0 and above. This node uses JSON Path to filter or find values inside of a complex JSON Object in the State of the Journey. Can also insert Key: Value pairs into the Shared State or Object Attributes who's Value is a static value or a JSON Path expression. In the outcomes, if a filter matches configured in the Node Attributes; The Node outcome is directed to the path of the configured JSON Path
 
 ## Inputs
 
